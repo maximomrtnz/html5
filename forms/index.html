@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Vuelos.com</title>	
+		<link type="text/css" rel="stylesheet" href="css/css.css"/>
+	</head>
+	<body>
+		<h1>Reserva de Vuelo</h1>
+		<p>Campo requerido<img src="images/required.png"></p>
+		<form method="POST" action=".">
+			<label>Nombre</label> 
+			<input pattern="^[A-Za-z]{6,15}$" type="text" placeholder="Nombre" name="nombre" required/>
+			</br>
+			<label>Apellido</label> 
+			<input pattern="^[A-Za-z]{6,15}$" type="text" placeholder="Apellido" name="apellido" required/>
+			</br>
+			<label>E-mail</label>
+			<input type="email" name="email" placeholder="email@email.com" required/>
+			</br>
+			<label>Cantidad de pasajeros</label>
+			<input type="number" name="pasajeros" value="1" min="1" max="30"/>
+			</br>
+			<label>Fecha Ida</label>
+			<input type="date" name="fecha_ida" required/>
+			</br>
+			<label>Aerolínea</label>
+			<input type="text" list="aerolineas" name="aerolinea"/>
+			<datalist id="aerolineas">
+				<option value="Aerolíneas Argentina">
+				<option value="American Airlines">	
+				<option value="Iberia">	
+				<option value="Lan">
+				<option value="Lade">	
+			</datalist>	
+			</br>
+			<input type="submit" value="Enviar sin validación" formnovalidate>
+			<input type="submit" value="Enviar">
+		</form>
+	</body>	
+</html>

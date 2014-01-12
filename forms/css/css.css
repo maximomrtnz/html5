@@ -1,0 +1,32 @@
+:required {
+	background-image: url(../images/required.png);
+	background-repeat: no-repeat;
+	background-position: 73% center;
+	background-size: 7%;
+}
+
+:focus:required{
+	background-image: none;
+}
+
+img{
+	height: 12px;
+}
+
+:valid, :focus:valid{
+	background-image: url(../images/valid.png);
+	background-repeat: no-repeat;
+	background-position: 73% center;
+	background-size: 7%;
+}
+
+:focus:invalid{
+	background-image: url(../images/invalid.png);
+	background-repeat: no-repeat;
+	background-position: 73% center;
+	background-size: 7%;
+}
+
+input[type="submit"]{
+	background-image: none;
+}
