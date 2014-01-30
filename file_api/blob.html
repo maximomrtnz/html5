@@ -1,0 +1,71 @@
+
+
+<input type="file" id="files" name="file" /> Read bytes: 
+
+<script>
+
+var file,n,reader,i,start,stop;
+
+function onFileSelect(){
+
+    var files = document.getElementById('files').files;
+    if (!files.length) {
+      alert('Por favor seleccione una imagen');
+      return;
+    }
+
+    file = files[0];
+
+    if(file.type.indexOf('image')==-1){
+      alert('Por favor seleccione una imagen');
+      return;
+    }
+
+    var size = file.size;
+
+    //1024 Bytes = 1 KB
+    var chunk = 1024;
+
+    n = Math.round(size/chunk);
+
+
+    reader = new FileReader();
+    
+    i = 0;
+    start = i;
+    stop = (i+1)*chunk-1;
+    
+    reader.onloadend = function(evt) {
+      if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+        console.log('---------------inicio chunk #'+i+'----------------');
+        console.log(evt.target.result);
+        console.log('---------------fin chunk #'+i+'----------------');
+        i++;
+        if(i<n){
+          start = stop+1;
+          stop = (i+1)*chunk-1;
+          stop = (stop>file.size)?file.size-1:stop;
+          readBytes(start,stop);
+        }
+      }
+    };
+
+    readBytes(start,stop);
+
+}
+
+function readBytes(startByte,stopByte){
+  var blob = file.slice(start, stop);
+  reader.readAsBinaryString(blob);
+}
+
+window.onload = function(){
+  var file = document.getElementById('files');
+  file.addEventListener('change',onFileSelect);
+};
+
+  
+  
+
+
+</script>
